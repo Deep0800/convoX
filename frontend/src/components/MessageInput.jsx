@@ -55,7 +55,8 @@ const MessageInput = () => {
             <img
               src={imagePreview}
               alt="Preview"
-              className="w-20 h-20 object-cover rounded-lg border border-zinc-700"
+              // className="w-20 h-20 object-cover rounded-lg border border-zinc-700"
+              className="w-full max-w-[20%] sm:max-w-[15%] md:max-w-[10%] object-cover rounded-lg border border-zinc-700"
             />
             <button
               onClick={removeImage}
@@ -73,7 +74,8 @@ const MessageInput = () => {
         <div className="flex-1 flex gap-2">
           <input
             type="text"
-            className="w-full input input-bordered rounded-lg input-sm sm:input-md"
+            // className="w-full input input-bordered rounded-lg input-sm sm:input-md"
+            className="w-full input input-bordered rounded-lg input-xs sm:input-sm md:input-md"
             placeholder="Type a message..."
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -88,19 +90,22 @@ const MessageInput = () => {
 
           <button
             type="button"
-            className={`hidden sm:flex btn btn-circle
+            // className={`hidden sm:flex btn btn-circle
+            //          ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+            className={`flex btn btn-circle p-1 sm:p-2
                      ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
             onClick={() => fileInputRef.current?.click()}
           >
-            <Image size={20} />
+            <Image size={16} className="sm:size-20"/>
           </button>
         </div>
         <button
           type="submit"
-          className="btn btn-sm btn-circle"
+          // className="btn btn-sm btn-circle"
+          className="btn btn-sm md:btn-md btn-circle"
           disabled={!text.trim() && !imagePreview}
         >
-          <Send size={22} />
+          <Send size={18} className="sm:size-22" />
         </button>
       </form>
     </div>
