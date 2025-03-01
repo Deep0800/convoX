@@ -48,34 +48,31 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="p-4 w-full">
+    <div className="p-4 w-full flex flex-col gap-3">
       {imagePreview && (
-        <div className="mb-3 flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <div className="relative">
             <img
               src={imagePreview}
               alt="Preview"
-              // className="w-20 h-20 object-cover rounded-lg border border-zinc-700"
-              className="w-full max-w-[20%] sm:max-w-[15%] md:max-w-[10%] object-cover rounded-lg border border-zinc-700"
+              className="w-24 h-24 object-cover rounded-lg border border-zinc-700"
             />
             <button
               onClick={removeImage}
-              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-base-300
-              flex items-center justify-center"
+              className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-base-300 flex items-center justify-center"
               type="button"
             >
-              <X className="size-3" />
+              <X className="size-4" />
             </button>
           </div>
         </div>
       )}
 
-      <form onSubmit={handleSendMessage} className="flex items-center gap-2">
-        <div className="flex-1 flex gap-2">
+      <form onSubmit={handleSendMessage} className="flex items-center gap-2 w-full">
+        <div className="flex-1 flex gap-2 items-center">
           <input
             type="text"
-            // className="w-full input input-bordered rounded-lg input-sm sm:input-md"
-            className="w-full input input-bordered rounded-lg input-xs sm:input-sm md:input-md"
+            className="w-full input input-bordered rounded-lg input-md"
             placeholder="Type a message..."
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -90,22 +87,18 @@ const MessageInput = () => {
 
           <button
             type="button"
-            // className={`hidden sm:flex btn btn-circle
-            //          ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
-            className={`flex btn btn-circle p-1 sm:p-2
-                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+            className={`btn btn-circle p-2 ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
             onClick={() => fileInputRef.current?.click()}
           >
-            <Image size={16} className="sm:size-20"/>
+            <Image size={20} />
           </button>
         </div>
         <button
           type="submit"
-          // className="btn btn-sm btn-circle"
-          className="btn btn-sm md:btn-md btn-circle"
+          className="btn btn-circle btn-md"
           disabled={!text.trim() && !imagePreview}
         >
-          <Send size={18} className="sm:size-22" />
+          <Send size={20} />
         </button>
       </form>
     </div>
